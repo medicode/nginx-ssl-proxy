@@ -17,6 +17,11 @@
 
 FROM nginx
 
+# Install security updates
+RUN apt-get update -yqq \
+    && apt-get install -yqq unattended-upgrades \
+    && unattended-upgrade -v
+    
 MAINTAINER Evan Brown <evanbrown@google.com>
 
 RUN rm /etc/nginx/conf.d/*.conf
